@@ -24,7 +24,7 @@
     <div class="container">
       <div class="row">
         <label>CRM Number:</label>
-        <input type="text" name="Enter CRM number" />
+        <input id="entityname" type="text" name="CRMnumber" />
       </div>
       <button type="submit" onclick="OpenNewContact()">Submit</button>
     </div>
@@ -50,12 +50,13 @@
     <script>
     function OpenNewContact() {
      // console.log('triggered');
+    var name = document.getElementsByName("CRMnumber")[0].value;
     var id = "5af02e2a-d0d1-e811-8158-000d3af97055"
     console.log(id);
     var title = "Sample Case Form"
     console.log(title);
     var entityFormOptions = {};
-        entityFormOptions["entityName"] = "incident";
+        entityFormOptions["entityName"] = name;
         console.log(JSON.stringify(entityFormOptions)+'formoptions');
     var formParameters = {};
         formParameters["title"] = title;
