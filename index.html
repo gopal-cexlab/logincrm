@@ -51,7 +51,7 @@
     function OpenNewContact() {
       // Retrieve Contact entity record
       // Change searchonly parameter to true, if you do not want to open the search results page
-        Microsoft.CIFramework.searchAndOpenRecords("contact", "?$select=fullname,telephone1&$filter=fullname eq $select=fullname", false ).then(
+        Microsoft.CIFramework.searchAndOpenRecords("contact", "?$select=fullname,telephone1&$filter=fullname eq 'Corets'&$select=Corets", false ).then(
             function success(result) {
             res=JSON.parse(result);
             console.log(res);
