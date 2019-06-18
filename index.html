@@ -26,7 +26,7 @@
         <label>CRM Number:</label>
         <input type="text" name="Enter CRM number" />
       </div>
-      <button type="submit" onclick="OpenNewContact();">Submit</button>
+      <button type="submit" onclick="OpenNewContact()">Submit</button>
     </div>
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
@@ -45,21 +45,23 @@
           </div>
       </div>
     </div> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script>
     function OpenNewContact() {
-      console.log('triggered');
+     // console.log('triggered');
     var id = "5af02e2a-d0d1-e811-8158-000d3af97055"
+    console.log(id);
     var title = "Sample Case Form"
+    console.log(title);
     var entityFormOptions = {};
-        entityFormOptions["entityName"] = "incident";
-        
+        entityFormOptions["entityName"] = "Alex";
+        console.log(JSON.stringify(entityFormOptions)+'formoptions');
     var formParameters = {};
         formParameters["title"] = title;
         formParameters["customerid"] = id;
         formParameters["customeridtype"] = "contact";
         formParameters["caseorigincode"] = 1;
         formParameters["description"] = "Opened the form with pre-populated details like title, contact id, and description.";
+        console.log(JSON.stringify(formParameters)+'perameters');
       console.log(Microsoft.CIFramework+'hellodom');
     //Open the form
     Microsoft.CIFramework.openForm(JSON.stringify(entityFormOptions), JSON.stringify(formParameters)).then(
@@ -72,11 +74,5 @@
     );
     }
     </script>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
