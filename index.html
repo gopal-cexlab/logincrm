@@ -49,32 +49,18 @@
     </script>
     <script>
     function OpenNewContact() {
-     // console.log('triggered');
-    var name = document.getElementsByName("CRMnumber")[0].value;
-    var id = "f5d3799d-ed90-e911-a980-000d3af24d43"
-    console.log(id);
-    var title = "entityrecord"
-    console.log(title);
-    var entityFormOptions = {};
-        entityFormOptions["entityName"] = name;
-        console.log(JSON.stringify(entityFormOptions)+'formoptions');
-    var formParameters = {};
-        formParameters["title"] = title;
-        formParameters["customerid"] = id;
-        formParameters["customeridtype"] = "contact";
-        formParameters["caseorigincode"] = 1;
-        formParameters["description"] = "Opened the form with pre-populated details like title, contact id, and description.";
-        console.log(JSON.stringify(formParameters)+'perameters');
-      console.log(Microsoft.CIFramework+'hellodom');
-    //Open the form
-    Microsoft.CIFramework.openForm(JSON.stringify(entityFormOptions), JSON.stringify(formParameters)).then(
-        function (success) {
-          console.log(success + 'hi');
-      },
-      function (error) {
-          console.log(error);
-      }
-    );
+     // retrieve contact record
+      Microsoft.CIFramework.searchAndOpenRecords("contact", "?$select=fullname", false ).then(
+          function success(result) { 
+          res=JSON.parse(result);
+              console.log('Record values: Full Name: ${res[0].fullname}');
+              // perform operations on record retrieval and opening
+          },
+          function (error) {
+              console.log(error.message);
+              // handle error conditions
+          }
+      );
     }
     </script>
   </body>
