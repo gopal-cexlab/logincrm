@@ -54,8 +54,8 @@
       Microsoft.CIFramework.searchAndOpenRecords("contact", "?$select=fullname,telephone1", true ).then(
           function success(result) {
           res=JSON.parse(result);
-          console.log(res);
-              console.log('The caller name is: ${res[0].fullname}');
+          console.log(res[0]);
+              console.log('The caller name is:'+ res[0][fullname]);
               // perform operations on record retrieval and opening
           },
           function (error) {
