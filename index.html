@@ -55,7 +55,7 @@
           function success(result) {
           res=JSON.parse(result);
           console.log(res[0]);
-          const fullname = (res[0].map(bill => bill.fullname);
+          fullname = res[0].map(bill => bill.fullname);
 
               console.log('The caller name is:'+ fullname[0]);
               // perform operations on record retrieval and opening
