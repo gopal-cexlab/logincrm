@@ -23,55 +23,50 @@
 
     <div class="container">
       <div class="row">
-        <label>CRM Number:</label>
+        <label>Name:</label>
         <input id="entityname" type="text" name="CRMnumber" />
       </div>
-      <button type="submit" onclick="OpenNewContact()">Submit</button>
-    </div>
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-    <!-- <div class="container">
-        
+      <button type="submit" onclick="OpenContactWithName()">Submit</button>
       <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <img class="img-rectangle" src="img/azure-portal.png" alt="Azure App Service Web Apps" height="140">
-          <h2>Azure App Service Web Apps</h2>
-          <p>App Service Web Apps is a fully managed compute platform that is optimized for hosting websites and web applications. This platform-as-a-service (PaaS) offering of Microsoft Azure lets you focus on your business logic while Azure takes care of the infrastructure to run and scale your apps.</p>
-        </div>
-          <div class="col-xs-12 col-sm-6">
-              <img class="img-rectangle" src="img/cdn.png" alt="CDN" height="140">
-              <h2>Azure Content Delivery Network (CDN)</h2>
-              <p>The Azure Content Delivery Network (CDN) caches static web content at strategically placed locations to provide maximum throughput for delivering content to users. The CDN offers developers a global solution for delivering high-bandwidth content by caching the content at physical nodes across the world.</p>
-          </div>
+        <label>Phone:</label>
+        <input id="entityphone" type="text" name="Phone" />
       </div>
-    </div> -->
+      <button type="submit" onclick="OpenContactWithPhone()">Submit</button>
+    </div>
     <script type="text/javascript" src="https://multiflylabs.crm8.dynamics.com/webresources/Widget/msdyn_ciLibrary.js" data-crmurl="https://multiflylabs.crm8.dynamics.com" data-cifid="CIFMainLibrary">
     </script>
     <script>
-    function OpenNewContact() {
+    function OpenContactWithName() {
       var name = document.getElementById('entityname').value;
-      // console.log(name);
       // Retrieve Contact entity record
       // Change searchonly parameter to true, if you do not want to open the search results page
-      // console.log('?$select=fullname,telephone1&$filter=firstname eq '+name+'&$search='+name+'');
       Microsoft.CIFramework.searchAndOpenRecords("contact", "?$select=fullname,telephone1&$filter=firstname eq '"+name+"'&$search='"+name+"'", false ).then(
         function success(result) {
-        res=JSON.parse(result);
-        // console.log(res);
-        // console.log(typeof res);
-        // console.log(res[0]);
-        // console.log(typeof res[0]);
-        // resp = Object.values(res[0]);
-        // fullname = res[0].map(name => name.fullname);
-        // console.log(resp[1]);
-            console.log("The caller name is:"+ res[0].fullname);
-            // perform operations on record retrieval and opening
+          res=JSON.parse(result);
+          console.log("The caller name is:"+ res[0].fullname);
+          // perform operations on record retrieval and opening
         },
         function (error) {
-            console.log(error.message);
-            // handle error conditions
+          console.log(error.message);
+          // handle error conditions
         }
-    );
+      );
+    }
+    function OpenContactWithPone() {
+      var phome = document.getElementById('entityphone').value;
+      // Retrieve Contact entity record
+      // Change searchonly parameter to true, if you do not want to open the search results page
+      Microsoft.CIFramework.searchAndOpenRecords("contact", "?$select=fullname,telephone1&$filter=telephone1 eq '"+phome+"'&$search='"+phome+"'", false ).then(
+        function success(result) {
+          res=JSON.parse(result);
+          console.log("The caller name is:"+ res[0].fullname);
+          // perform operations on record retrieval and opening
+        },
+        function (error) {
+          console.log(error.message);
+          // handle error conditions
+        }
+      );
     }
     </script>
   </body>
