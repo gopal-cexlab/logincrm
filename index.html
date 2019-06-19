@@ -81,7 +81,7 @@
       console.log(phone);
       // Retrieve Contact entity record
       // Change searchonly parameter to true, if you do not want to open the search results page
-      Microsoft.CIFramework.searchAndOpenRecords("case", "?$select=telephone1&$filter=telephone1 eq '"+phone+"'&$search="+phone+"", false ).then(
+      Microsoft.CIFramework.searchAndOpenRecords("incident", "?$select=telephone1&$filter=telephone1 eq '"+phone+"'&$search="+phone+"", false ).then(
         function success(result) {
           res=JSON.parse(result);
           console.log(res);
