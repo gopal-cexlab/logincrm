@@ -39,9 +39,9 @@
       </div>
       <div class="row">
           <label>Open Form:</label>
-          <input id="caseentityphone" type="text" name="CPhone" />
-          <button type="submit" onclick="OpenForm()">Submit</button>
-      </div>OpenForm
+          <input id="caseentity" type="text" name="Case" />
+          <button type="submit" onclick="OpenNewCaseForm()">Submit</button>
+      </div>
     </div>
     <script type="text/javascript" src="https://multiflylabs.crm8.dynamics.com/webresources/Widget/msdyn_ciLibrary.js" data-crmurl="https://multiflylabs.crm8.dynamics.com" data-cifid="CIFMainLibrary">
     </script>
@@ -109,20 +109,20 @@
     console.log(cid);
 
     var id = "5af02e2a-d0d1-e811-8158-000d3af97055"
-    var title = "Sample Case Form"
+    var title = ""
     var entityFormOptions = {};
         entityFormOptions["entityName"] = "incident";
         
     var formParameters = {};
       //pre-populate some fields based on the context
-      formParameters["title"] = title;
-      formParameters["customerid"] = cid;
+      formParameters["title"] = "";
+      formParameters["customerid"] = "";
       formParameters["customeridtype"] = "contact";
-      formParameters["caseorigincode"] = 1;
-      formParameters["description"] = "Opened the form with pre-populated details like title, contact id, and description.";
+      formParameters["caseorigincode"] = "";
+      formParameters["description"] = "";
 
       //Open the form
-    function OpenForm() {
+    function OpenNewCaseForm() {
       Microsoft.CIFramework.openForm(JSON.stringify(entityFormOptions), JSON.stringify(formParameters)).then(
         function (success) {
           console.log(success);
