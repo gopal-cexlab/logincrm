@@ -26,17 +26,17 @@
         <label>Name:</label>
         <input id="entityname" type="text" name="CRMnumber" />
       </div>
-      <button type="submit" onclick="OpenContactWithName()">Submit</button>
+      <button type="submit" onclick="SearchAndOpenContactWithName()">Submit</button>
       <div class="row">
         <label>Phone:</label>
         <input id="entityphone" type="text" name="Phone" />
       </div>
-      <button type="submit" onclick="OpenContactWithPhone()">Submit</button>
+      <button type="submit" onclick="SearchAndOpenContactWithPhone()">Submit</button>
     </div>
     <script type="text/javascript" src="https://multiflylabs.crm8.dynamics.com/webresources/Widget/msdyn_ciLibrary.js" data-crmurl="https://multiflylabs.crm8.dynamics.com" data-cifid="CIFMainLibrary">
     </script>
     <script>
-    function OpenContactWithName() {
+    function SearchAndOpenContactWithName() {
       var name = document.getElementById('entityname').value;
       // Retrieve Contact entity record
       // Change searchonly parameter to true, if you do not want to open the search results page
@@ -52,7 +52,7 @@
         }
       );
     }
-    function OpenContactWithPone() {
+    function SearchAndOpenContactWithPhone() {
       var phome = document.getElementById('entityphone').value;
       // Retrieve Contact entity record
       // Change searchonly parameter to true, if you do not want to open the search results page
