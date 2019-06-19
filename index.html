@@ -23,24 +23,30 @@
 
     <div class="container">
       <div class="row">
-        <label>Name:</label>
+        <label>Contact Entity Name:</label>
         <input id="entityname" type="text" name="CRMnumber" />
+        <button type="submit" onclick="SearchAndOpenContactWithName()">Submit</button>
       </div>
-      <button type="submit" onclick="SearchAndOpenContactWithName()">Submit</button>
       <div class="row">
-        <label>Phone:</label>
+        <label>Contact Entity Phone:</label>
         <input id="entityphone" type="text" name="Phone" />
+        <button type="submit" onclick="SearchAndOpenContactWithPhone()">Submit</button>
       </div>
-      <button type="submit" onclick="SearchAndOpenContactWithPhone()">Submit</button>
+      <div class="row">
+          <label>Case Entity Name:</label>
+          <input id="caseentityphone" type="text" name="CPhone" />
+          <button type="submit" onclick="SearchAndOpenCaseWithPhone()">Submit</button>
+        </div>
     </div>
     <script type="text/javascript" src="https://multiflylabs.crm8.dynamics.com/webresources/Widget/msdyn_ciLibrary.js" data-crmurl="https://multiflylabs.crm8.dynamics.com" data-cifid="CIFMainLibrary">
     </script>
     <script>
+  /*** SearchAndOpenContactWithName ***/
     function SearchAndOpenContactWithName() {
       var name = document.getElementById('entityname').value;
       // Retrieve Contact entity record
       // Change searchonly parameter to true, if you do not want to open the search results page
-      Microsoft.CIFramework.searchAndOpenRecords("contact", "?$select=fullname&$filter=firstname eq '"+name+"'&$search='"+name+"'", false ).then(
+      Microsoft.CIFramework.searchAndOpenRecords("contact", "?$select=fullname&$filter=firstname eq '"+name+"'&$search="+name+"", false ).then(
         function success(result) {
           res=JSON.parse(result);
           console.log("The caller name is:"+ res[0].fullname);
@@ -52,11 +58,30 @@
         }
       );
     }
+  /*** SearchAndOpenContactWithPhone ***/
     function SearchAndOpenContactWithPhone() {
       var phone = document.getElementById('entityphone').value;
       // Retrieve Contact entity record
       // Change searchonly parameter to true, if you do not want to open the search results page
       Microsoft.CIFramework.searchAndOpenRecords("contact", "?$select=telephone1&$filter=telephone1 eq '"+phone+"'&$search="+phone+"", false ).then(
+        function success(result) {
+          res=JSON.parse(result);
+          console.log("The caller name is:"+ res[0].telephone1);
+          // perform operations on record retrieval and opening
+        },
+        function (error) {
+          console.log(error.message);
+          // handle error conditions
+        }
+      );
+    }
+  /*** SearchAndOpenCaseWithName ***/
+    function SearchAndOpenCaseWithPhone() {
+      var phone = document.getElementById('caseentityphone').value;
+      console.log(phone);
+      // Retrieve Contact entity record
+      // Change searchonly parameter to true, if you do not want to open the search results page
+      Microsoft.CIFramework.searchAndOpenRecords("case", "?$select=telephone1&$filter=telephone1 eq '"+phone+"'&$search="+phone+"", false ).then(
         function success(result) {
           res=JSON.parse(result);
           console.log(res);
