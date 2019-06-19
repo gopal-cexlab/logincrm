@@ -33,14 +33,12 @@
         <button type="submit" onclick="SearchAndOpenContactWithPhone()">Submit</button>
       </div>
       <div class="row">
-          <label>Case Entity Name:</label>
-          <input id="caseentityphone" type="text" name="CPhone" />
+          <label>Open Form:</label>
+          <input id="caseTitle" type="text" name="Case" />
           <button type="submit" onclick="SearchAndOpenCaseWithPhone()">Submit</button>
       </div>
       <div class="row">
-          <label>Open Form:</label>
-          <input id="caseentity" type="text" name="Case" />
-          <button type="submit" onclick="OpenNewCaseForm()">Submit</button>
+          <button type="submit" onclick="OpenNewCaseForm()">New Case</button>
       </div>
     </div>
     <script type="text/javascript" src="https://multiflylabs.crm8.dynamics.com/webresources/Widget/msdyn_ciLibrary.js" data-crmurl="https://multiflylabs.crm8.dynamics.com" data-cifid="CIFMainLibrary">
@@ -87,11 +85,11 @@
     }
   /*** SearchAndOpenCaseWithName ***/
     function SearchAndOpenCaseWithPhone() {
-      var phone = document.getElementById('caseentityphone').value;
-      console.log(phone);
+      var caseTitle = document.getElementById('caseTitle').value;
+      console.log(caseTitle);
       // Retrieve Contact entity record
       // Change searchonly parameter to true, if you do not want to open the search results page
-      Microsoft.CIFramework.searchAndOpenRecords("incident", "?$select=telephone1&$filter=telephone1 eq '"+phone+"'&$search="+phone+"", false ).then(
+      Microsoft.CIFramework.searchAndOpenRecords("incident", "?$select=title&$filter=title eq '"+caseTitle+"'&$search="+caseTitle+"", false ).then(
         function success(result) {
           res=JSON.parse(result);
           console.log(res);
