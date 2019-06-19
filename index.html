@@ -55,7 +55,6 @@
           res=JSON.parse(result);
           console.log("The caller name is:"+ res[0].fullname);
           cid = res[0].contactid;
-          console.log(cid); 
           // perform operations on record retrieval and opening
         },
         function (error) {
@@ -74,7 +73,6 @@
           res=JSON.parse(result);
           console.log("The caller name is:"+ res[0].telephone1);
           cid = res[0].contactid;
-          console.log(cid); 
           // perform operations on record retrieval and opening
         },
         function (error) {
@@ -92,10 +90,8 @@
       Microsoft.CIFramework.searchAndOpenRecords("incident", "?$select=title&$filter=title eq '"+caseTitle+"'&$search="+caseTitle+"", false ).then(
         function success(result) {
           res=JSON.parse(result);
-          console.log(res);
           console.log("The caller name is:"+ res[0].telephone1);
           cid = res[0].contactid;
-          console.log(cid); 
           // perform operations on record retrieval and opening
         },
         function (error) {
