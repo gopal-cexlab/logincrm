@@ -59,8 +59,8 @@
         res=JSON.parse(result);
         console.log(res);
         console.log(res[0]);
-        // var fullname = res.map(name => name.fullname);
-        // console.log(fullname);
+        fullname = res.map(name => name.fullname);
+        console.log(fullname);
             console.log('The caller name is: ${res[0].fullname}, Telephone Number: ${res[0].telephone1}');
             // perform operations on record retrieval and opening
         },
