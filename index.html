@@ -36,11 +36,17 @@
           <label>Case Entity Name:</label>
           <input id="caseentityphone" type="text" name="CPhone" />
           <button type="submit" onclick="SearchAndOpenCaseWithPhone()">Submit</button>
-        </div>
+      </div>
+      <div class="row">
+          <label>Open Form:</label>
+          <input id="caseentityphone" type="text" name="CPhone" />
+          <button type="submit" onclick="OpenForm()">Submit</button>
+      </div>OpenForm
     </div>
     <script type="text/javascript" src="https://multiflylabs.crm8.dynamics.com/webresources/Widget/msdyn_ciLibrary.js" data-crmurl="https://multiflylabs.crm8.dynamics.com" data-cifid="CIFMainLibrary">
     </script>
     <script>
+      var cid;
   /*** SearchAndOpenContactWithName ***/
     function SearchAndOpenContactWithName() {
       var name = document.getElementById('entityname').value;
@@ -50,6 +56,8 @@
         function success(result) {
           res=JSON.parse(result);
           console.log("The caller name is:"+ res[0].fullname);
+          cid = res[0].contactid;
+          console.log(cid); 
           // perform operations on record retrieval and opening
         },
         function (error) {
@@ -67,6 +75,8 @@
         function success(result) {
           res=JSON.parse(result);
           console.log("The caller name is:"+ res[0].telephone1);
+          cid = res[0].contactid;
+          console.log(cid); 
           // perform operations on record retrieval and opening
         },
         function (error) {
@@ -86,11 +96,39 @@
           res=JSON.parse(result);
           console.log(res);
           console.log("The caller name is:"+ res[0].telephone1);
+          cid = res[0].contactid;
+          console.log(cid); 
           // perform operations on record retrieval and opening
         },
         function (error) {
           console.log(error.message);
           // handle error conditions
+        }
+      );
+    }
+    console.log(cid);
+
+    var id = "5af02e2a-d0d1-e811-8158-000d3af97055"
+    var title = "Sample Case Form"
+    var entityFormOptions = {};
+        entityFormOptions["entityName"] = "incident";
+        
+    var formParameters = {};
+      //pre-populate some fields based on the context
+      formParameters["title"] = title;
+      formParameters["customerid"] = cid;
+      formParameters["customeridtype"] = "contact";
+      formParameters["caseorigincode"] = 1;
+      formParameters["description"] = "Opened the form with pre-populated details like title, contact id, and description.";
+
+      //Open the form
+    function OpenForm() {
+      Microsoft.CIFramework.openForm(JSON.stringify(entityFormOptions), JSON.stringify(formParameters)).then(
+        function (success) {
+          console.log(success);
+        },
+        function (error) {
+            console.log(error);
         }
       );
     }
