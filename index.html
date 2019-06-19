@@ -57,16 +57,14 @@
       Microsoft.CIFramework.searchAndOpenRecords("contact", "?$select=fullname,telephone1&$filter=firstname eq '"+name+"'&$search='"+name+"'", false ).then(
         function success(result) {
         res=JSON.parse(result);
-        console.log(res);
-        console.log(typeof res);
-        console.log(res[0]);
-        console.log(typeof res[0]);
+        // console.log(res);
+        // console.log(typeof res);
+        // console.log(res[0]);
+        // console.log(typeof res[0]);
         resp = Object.values(res[0]);
         // fullname = res[0].map(name => name.fullname);
-        console.log(resp['fullname']);
-        console.log(resp.fullname);
         console.log(resp[1]);
-            console.log("The caller name is:"+ res[0].fullname);
+            console.log("The caller name is:"+ res[1].fullname);
             // perform operations on record retrieval and opening
         },
         function (error) {
